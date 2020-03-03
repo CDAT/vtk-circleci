@@ -31,6 +31,8 @@ aliases:
  - &conda_build
     name: conda_build
     command: |
+       echo "xxx conda_build xxx"
+       ls -l
        source $WORKDIR/miniconda/etc/profile.d/conda.sh
        conda activate base
        conda config --add channels conda-forge --force
