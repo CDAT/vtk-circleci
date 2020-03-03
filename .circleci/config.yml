@@ -68,39 +68,9 @@ jobs:
               paths:
                  - linux_build
 
-   osx_VTK_WITH_OSMESAFalsepython3.7:
-      macos:
-         xcode: "11.3.0"
-      environment:
-         WORKDIR: /Users/distiller/project/macos_build
-         VARIANT: "osx_VTK_WITH_OSMESAFalsepython3.7"
-      steps:
-         - checkout
-         - attach_workspace:
-              at: .
-         - run: *conda_build
-
-   linux_VTK_WITH_OSMESAFalsepython3.7:
-      machine:
-         image: circleci/classic:latest
-      environment:
-         WORKDIR: /home/circleci/project/linux_build
-         VARIANT: "linux_VTK_WITH_OSMESAFalsepython3.7"
-      steps:
-         - checkout
-         - attach_workspace:
-              at: .
-         - run: *conda_build
-
 workflows:
    version: 2
    vtk:
       jobs:
          - macos_setup
          - linux_setup
-         - osx_VTK_WITH_OSMESAFalsepython3.7:
-              requires:
-                 - macos_setup
-         - linux_VTK_WITH_OSMESAFalsepython3.7:
-              requires:
-                 - linux_setup
