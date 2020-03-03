@@ -124,14 +124,14 @@ workflows:
          - macos_setup
          - linux_setup
          - osx_VTK_WITH_OSMESAFalsepython3.7:
-           requires:
-              - macos_setup
+              requires:
+                 - macos_setup
          - osx_VTK_WITH_OSMESATruepython3.7:
-           requires:
-              - macos_setup
+              requires:
+                 - macos_setup
          - linux_VTK_WITH_OSMESAFalsepython3.7:
-           requires:
-              - linux_setup
+              requires:
+                 - linux_setup
          - linux_VTK_WITH_OSMESATruepython3.7:
-           requires:
-              - linux_setup
+              requires:
+                 - linux_setup
