@@ -23,6 +23,8 @@ aliases:
     command: |
        mkdir -p workspace
        if [[ `uname` == Linux ]]; then
+          yum install -y git wget
+          mkdir -p $WORKDIR
           wget $CONDA_URL/$MINICONDA -O $WORKDIR/$MINICONDA
        else
           curl $CONDA_URL/$MINICONDA -o $WORKDIR/$MINICONDA
