@@ -94,8 +94,8 @@ jobs:
          - run: *conda_build
 
    linux_VTK_WITH_OSMESAFalsepython3.7:
-      machine:
-         image: circleci/classic:latest
+      docker:
+         image: condaforge/linux-anvil-comp7
       environment:
          WORKDIR: /home/circleci/project/linux_build
          VARIANT: "linux_VTK_WITH_OSMESAFalsepython3.7"
@@ -103,11 +103,12 @@ jobs:
          - checkout
          - attach_workspace:
               at: .
+         - run: yum install -y mega-libGL-devel
          - run: *conda_build
 
    linux_VTK_WITH_OSMESATruepython3.7:
-      machine:
-         image: circleci/classic:latest
+      docker:
+         image: condaforge/linux-anvil-comp7
       environment:
          WORKDIR: /home/circleci/project/linux_build
          VARIANT: "linux_VTK_WITH_OSMESATruepython3.7"
@@ -115,6 +116,7 @@ jobs:
          - checkout
          - attach_workspace:
               at: .
+         - run: yum install -y mega-libGL-devel
          - run: *conda_build
 
 workflows:
@@ -123,12 +125,12 @@ workflows:
       jobs:
          - macos_setup
          - linux_setup
-         - osx_VTK_WITH_OSMESAFalsepython3.7:
-              requires:
-                 - macos_setup
-         - osx_VTK_WITH_OSMESATruepython3.7:
-              requires:
-                 - macos_setup
+         #- osx_VTK_WITH_OSMESAFalsepython3.7:
+         #     requires:
+         #        - macos_setup
+         #- osx_VTK_WITH_OSMESATruepython3.7:
+         #     requires:
+         #        - macos_setup
          - linux_VTK_WITH_OSMESAFalsepython3.7:
               requires:
                  - linux_setup
