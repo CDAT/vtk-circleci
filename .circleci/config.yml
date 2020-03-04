@@ -76,7 +76,7 @@ jobs:
          - run: *setup_miniconda
          - run: *conda_rerender
          - persist_to_workspace:
-              root: 
+              root: .
               paths: 
                  - macos_build
 
