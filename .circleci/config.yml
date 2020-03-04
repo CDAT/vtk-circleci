@@ -6,7 +6,7 @@ aliases:
     command: |
        mkdir -p workspace
        git clone -b validateNightly git@github.com:CDAT/cdat workspace/cdat
-       #### install_miniconda.py installs miniconda3 under $WORKDIR/miniconda
+       ###### install_miniconda.py installs miniconda3 under $WORKDIR/miniconda
        python workspace/cdat/scripts/install_miniconda.py -w $WORKDIR -p 'py3'
        source $WORKDIR/miniconda/etc/profile.d/conda.sh
        conda activate base
@@ -19,6 +19,7 @@ aliases:
   - &conda_rerender
     name: conda_rerender
     command: |
+       echo "xxx conda_rerender xxx"
        git clone https://github.com/CDAT/conda-recipes.git $WORKDIR/conda-recipes 
        source $WORKDIR/miniconda/etc/profile.d/conda.sh
        conda activate base
