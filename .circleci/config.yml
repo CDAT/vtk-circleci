@@ -29,16 +29,16 @@ aliases:
        conda smithy rerender
        ls -l .ci_support      
 
- - &conda_build
-    name: conda_build
-    command: |
-       source $WORKDIR/miniconda/etc/profile.d/conda.sh
-       conda activate base
-       conda config --add channels conda-forge --force
-       conda config --add channels cdat/label/nightly --force
-       conda config --set channel_priority strict
-       cd $WORKDIR/vtk-feedstock
-       conda build -m .ci_support/${VARIANT}.yaml recipe/
+  - &conda_build
+     name: conda_build
+     command: |
+        source $WORKDIR/miniconda/etc/profile.d/conda.sh
+        conda activate base
+        conda config --add channels conda-forge --force
+        conda config --add channels cdat/label/nightly --force
+        conda config --set channel_priority strict
+        cd $WORKDIR/vtk-feedstock
+        conda build -m .ci_support/${VARIANT}.yaml recipe/
 
 jobs:
    macos_setup:
