@@ -56,8 +56,8 @@ jobs:
                  - macos_build
 
    linux_setup:
-      machine:
-         image: circleci/classic:latest
+      docker:
+         - image: condaforge/linux-anvil-comp7
       environment:
          WORKDIR: /home/circleci/project/linux_build
       steps:
@@ -95,7 +95,7 @@ jobs:
 
    linux_VTK_WITH_OSMESAFalsepython3.7:
       docker:
-         image: condaforge/linux-anvil-comp7
+         - image: condaforge/linux-anvil-comp7
       environment:
          WORKDIR: /home/circleci/project/linux_build
          VARIANT: "linux_VTK_WITH_OSMESAFalsepython3.7"
@@ -108,7 +108,7 @@ jobs:
 
    linux_VTK_WITH_OSMESATruepython3.7:
       docker:
-         image: condaforge/linux-anvil-comp7
+         - image: condaforge/linux-anvil-comp7
       environment:
          WORKDIR: /home/circleci/project/linux_build
          VARIANT: "linux_VTK_WITH_OSMESATruepython3.7"
@@ -123,7 +123,7 @@ workflows:
    version: 2
    vtk:
       jobs:
-         - macos_setup
+         #- macos_setup
          - linux_setup
          #- osx_VTK_WITH_OSMESAFalsepython3.7:
          #     requires:
