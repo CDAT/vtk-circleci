@@ -27,6 +27,7 @@ aliases:
           mkdir -p $WORKDIR
           wget $CONDA_URL/$MINICONDA -O $WORKDIR/$MINICONDA
        else
+          echo "curl $CONDA_URL/$MINICONDA -o $WORKDIR/$MINICONDA"
           curl $CONDA_URL/$MINICONDA -o $WORKDIR/$MINICONDA
        fi
        bash $WORKDIR/$MINICONDA -b -p $WORKDIR/miniconda
