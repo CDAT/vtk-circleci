@@ -88,7 +88,6 @@ jobs:
          MINICONDA: "Miniconda3-latest-Linux-x86_64.sh"
       steps:
          - checkout
-         - run: yum install -y git wget
          - run: *setup_miniconda
          - run: *conda_rerender
          - persist_to_workspace:
@@ -131,7 +130,6 @@ jobs:
          - run: mkdir -p /home/circleci/project
          - attach_workspace:
               at: /home/circleci/project
-         - run: yum install -y mega-libGL-devel
          - run: *conda_build
 
    linux_VTK_WITH_OSMESATruepython3.7:
@@ -145,7 +143,6 @@ jobs:
          - run: mkdir -p /home/circleci/project
          - attach_workspace:
               at: /home/circleci/project
-         - run: yum install -y mega-libGL-devel
          - run: *conda_build
 
 workflows:
