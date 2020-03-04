@@ -62,6 +62,7 @@ jobs:
          WORKDIR: /home/circleci/project/linux_build
       steps:
          - checkout
+         - run: yum install -y git
          - run: *setup_miniconda
          - run: *conda_rerender
          - persist_to_workspace:
