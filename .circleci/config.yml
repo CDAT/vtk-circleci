@@ -23,7 +23,7 @@ aliases:
     command: |
        mkdir -p workspace
        if [[ `uname` == Linux ]]; then
-          yum install -y git wget
+          yum install -y git wget mega-libGL-devel
           mkdir -p $WORKDIR
           wget $CONDA_URL/$MINICONDA -O $WORKDIR/$MINICONDA
        else
@@ -78,7 +78,7 @@ jobs:
          - persist_to_workspace:
               root: .
               paths: 
-                 - macos_build
+                 - /home/circleci/project/linux_build
 
    linux_setup:
       docker:
@@ -94,7 +94,7 @@ jobs:
          - persist_to_workspace:
               root: .
               paths:
-                 - linux_build
+                 - /home/circleci/project/linux_build
 
    osx_VTK_WITH_OSMESAFalsepython3.7:
       macos:
@@ -128,8 +128,9 @@ jobs:
          VARIANT: "linux_VTK_WITH_OSMESAFalsepython3.7"
       steps:
          - checkout
+         - run: mkdir -p $WORKDIR
          - attach_workspace:
-              at: .
+              at: /home/circleci/project/linux_build
          - run: yum install -y mega-libGL-devel
          - run: *conda_build
 
@@ -141,8 +142,9 @@ jobs:
          VARIANT: "linux_VTK_WITH_OSMESATruepython3.7"
       steps:
          - checkout
+         - run: mkdir -p $WORKDIR
          - attach_workspace:
-              at: .
+              at: /home/circleci/project/linux_build
          - run: yum install -y mega-libGL-devel
          - run: *conda_build
 
