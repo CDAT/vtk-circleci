@@ -76,9 +76,9 @@ jobs:
          WORKDIR: /Users/distiller/project/macos_build
          VARIANT: "osx_VTK_WITH_OSMESAFalsepython3.7"
       steps:
+         - checkout
          - attach_workspace:
               at: .
-         - checkout
          - run: *conda_build
 
    osx_VTK_WITH_OSMESATruepython3.7:
@@ -88,9 +88,9 @@ jobs:
          WORKDIR: /Users/distiller/project/macos_build
          VARIANT: "osx_VTK_WITH_OSMESATruepython3.7"
       steps:
+         - checkout
          - attach_workspace:
               at: .
-         - checkout
          - run: *conda_build
 
    linux_VTK_WITH_OSMESAFalsepython3.7:
@@ -100,9 +100,9 @@ jobs:
          WORKDIR: /home/circleci/project/linux_build
          VARIANT: "linux_VTK_WITH_OSMESAFalsepython3.7"
       steps:
+         - checkout
          - attach_workspace:
               at: .
-         - checkout
          - run: *conda_build
 
    linux_VTK_WITH_OSMESATruepython3.7:
@@ -112,9 +112,9 @@ jobs:
          WORKDIR: /home/circleci/project/linux_build
          VARIANT: "linux_VTK_WITH_OSMESATruepython3.7"
       steps:
+         - checkout
          - attach_workspace:
               at: .
-         - checkout
          - run: *conda_build
 
 workflows:
