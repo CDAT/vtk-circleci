@@ -76,9 +76,9 @@ jobs:
          - run: *setup_miniconda
          - run: *conda_rerender
          - persist_to_workspace:
-              root: .
+              root: 
               paths: 
-                 - /home/circleci/project/linux_build
+                 - macos_build
 
    linux_setup:
       docker:
@@ -92,9 +92,9 @@ jobs:
          - run: *setup_miniconda
          - run: *conda_rerender
          - persist_to_workspace:
-              root: .
+              root: /home/circleci/project
               paths:
-                 - /home/circleci/project/linux_build
+                 - linux_build
 
    osx_VTK_WITH_OSMESAFalsepython3.7:
       macos:
@@ -128,9 +128,9 @@ jobs:
          VARIANT: "linux_VTK_WITH_OSMESAFalsepython3.7"
       steps:
          - checkout
-         - run: mkdir -p $WORKDIR
+         - run: mkdir -p /home/circleci/project
          - attach_workspace:
-              at: /home/circleci/project/linux_build
+              at: /home/circleci/project
          - run: yum install -y mega-libGL-devel
          - run: *conda_build
 
@@ -142,9 +142,9 @@ jobs:
          VARIANT: "linux_VTK_WITH_OSMESATruepython3.7"
       steps:
          - checkout
-         - run: mkdir -p $WORKDIR
+         - run: mkdir -p /home/circleci/project
          - attach_workspace:
-              at: /home/circleci/project/linux_build
+              at: /home/circleci/project
          - run: yum install -y mega-libGL-devel
          - run: *conda_build
 
