@@ -63,6 +63,7 @@ jobs:
       steps:
          - checkout
          - run: yum install -y git
+         - run: pip install argparse
          - run: *setup_miniconda
          - run: *conda_rerender
          - persist_to_workspace:
