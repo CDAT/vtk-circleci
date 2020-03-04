@@ -1,30 +1,14 @@
 version: 2
 
 aliases:
-  - &setup_miniconda_prev
-    name: setup_miniconda_prev
-    command: |
-       mkdir -p workspace
-       git clone -b validateNightly https://github.com/CDAT/cdat.git workspace/cdat
-       ###### install_miniconda.py installs miniconda3 under $WORKDIR/miniconda
-       python workspace/cdat/scripts/install_miniconda.py -w $WORKDIR -p 'py3'
-       source $WORKDIR/miniconda/etc/profile.d/conda.sh
-       conda activate base
-       conda config --set always_yes yes
-       conda config --add channels conda-forge --force
-       conda config --set channel_priority strict
-       conda install -n base -c conda-forge conda-build anaconda-client conda-smithy conda-verify conda-forge-pinning conda-forge-build-setup conda-forge-ci-setup
-       conda config --set anaconda_upload no
-
   - &setup_miniconda
     name: setup_miniconda
     environment:
        CONDA_URL: "https://repo.continuum.io/miniconda"
     command: |
-       mkdir -p workspace
+       mkdir -p $WORKDIR
        if [[ `uname` == Linux ]]; then
           yum install -y git wget mega-libGL-devel
-          mkdir -p $WORKDIR
           wget $CONDA_URL/$MINICONDA -O $WORKDIR/$MINICONDA
        else
           echo "curl $CONDA_URL/$MINICONDA -o $WORKDIR/$MINICONDA"
