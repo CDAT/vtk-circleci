@@ -200,13 +200,13 @@ workflows:
          #- linux_VTK_WITH_OSMESATruepython3.7:
          #     requires:
          #        - linux_setup
-         - osx_python3.6:
+         - osx_python2.7:
               requires:
                  - macos_setup
          - osx_python3.7:
               requires:
                  - macos_setup
-         - linux_python3.6:
+         - linux_python2.7:
               requires:
                  - linux_setup
          - linux_python3.7:
