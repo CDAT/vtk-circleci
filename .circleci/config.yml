@@ -131,6 +131,57 @@ jobs:
               at: /home/circleci/project
          - run: *conda_build
 
+   # vtk-feedstock master
+   osx_python2.7:
+      macos:
+         xcode: "11.3.0"
+      environment:
+         WORKDIR: /Users/distiller/project/macos_build
+         VARIANT: "osx_python2.7"
+      steps:
+         - checkout
+         - attach_workspace:
+              at: .
+         - run: *conda_build
+
+   osx_python3.7:
+      macos:
+         xcode: "11.3.0"
+      environment:
+         WORKDIR: /Users/distiller/project/macos_build
+         VARIANT: "osx_python3.7"
+      steps:
+         - checkout
+         - attach_workspace:
+              at: .
+         - run: *conda_build
+
+   linux_python3.6:
+      docker:
+         - image: condaforge/linux-anvil-comp7
+      environment:
+         WORKDIR: /home/circleci/project/linux_build
+         VARIANT: "linux_python3.6"
+      steps:
+         - checkout
+         - run: mkdir -p /home/circleci/project
+         - attach_workspace:
+              at: /home/circleci/project
+         - run: *conda_build   
+
+   linux_python3.7:
+      docker:
+         - image: condaforge/linux-anvil-comp7
+      environment:
+         WORKDIR: /home/circleci/project/linux_build
+         VARIANT: "linux_python3.7"
+      steps:
+         - checkout
+         - run: mkdir -p /home/circleci/project
+         - attach_workspace:
+              at: /home/circleci/project
+         - run: *conda_build   
+
 workflows:
    version: 2
    vtk:
@@ -149,3 +200,15 @@ workflows:
          #- linux_VTK_WITH_OSMESATruepython3.7:
          #     requires:
          #        - linux_setup
+         - osx_python3.6:
+              requires:
+                 - macos_setup
+         - osx_python3.7:
+              requires:
+                 - macos_setup
+         - linux_python3.6:
+              requires:
+                 - linux_setup
+         - linux_python3.7:
+              requires:
+                 - linux_setup
