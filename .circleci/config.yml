@@ -33,7 +33,8 @@ aliases:
        source $WORKDIR/miniconda/etc/profile.d/conda.sh
        conda activate base
 
-       git clone -b dev https://github.com/muryanto1/vtk-feedstock.git $WORKDIR/vtk-feedstock
+       #git clone -b dev https://github.com/muryanto1/vtk-feedstock.git $WORKDIR/vtk-feedstock
+       git clone https://github.com/muryanto1/vtk-feedstock.git $WORKDIR/vtk-feedstock
        cd $WORKDIR/vtk-feedstock
        conda smithy rerender
        ls -l .ci_support      
@@ -136,15 +137,15 @@ workflows:
       jobs:
          - macos_setup
          - linux_setup
-         - osx_VTK_WITH_OSMESAFalsepython3.7:
-              requires:
-                 - macos_setup
-         - osx_VTK_WITH_OSMESATruepython3.7:
-              requires:
-                 - macos_setup
-         - linux_VTK_WITH_OSMESAFalsepython3.7:
-              requires:
-                 - linux_setup
-         - linux_VTK_WITH_OSMESATruepython3.7:
-              requires:
-                 - linux_setup
+         #- osx_VTK_WITH_OSMESAFalsepython3.7:
+         #     requires:
+         #        - macos_setup
+         #- osx_VTK_WITH_OSMESATruepython3.7:
+         #     requires:
+         #        - macos_setup
+         #- linux_VTK_WITH_OSMESAFalsepython3.7:
+         #     requires:
+         #        - linux_setup
+         #- linux_VTK_WITH_OSMESATruepython3.7:
+         #     requires:
+         #        - linux_setup
