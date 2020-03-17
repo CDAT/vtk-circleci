@@ -52,7 +52,7 @@ aliases:
         conda config --add channels cdat/label/nightly --force
         conda config --set channel_priority strict
         cd $WORKDIR/vtk-feedstock
-        conda build -m .ci_support/${VARIANT}.yaml recipe/
+        conda build -m .ci_support/${VARIANT}.____cpython.yaml recipe/
 
 jobs:
    macos_setup:
