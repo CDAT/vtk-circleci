@@ -9,13 +9,15 @@ aliases:
        mkdir -p $WORKDIR
        if [[ `uname` == Linux ]]; then
           yum install -y git wget mega-libGL-devel
-          echo "wget $CONDA_URL/Miniconda3-${MINICONDA_VER}-Linux-x86_64.sh -O $WORKDIR/$MINICONDA"
-          wget $CONDA_URL/Miniconda3-${MINICONDA_VER}-Linux-x86_64.sh -O $WORKDIR/$MINICONDA
+          CONDA_SCRIPT="Miniconda3-${MINICONDA_VER}-Linux-x86_64.sh"
+          echo "wget $CONDA_URL/$CONDA_SCRIPT -O $WORKDIR/$CONDA_SCRIPT"
+          wget $CONDA_URL/$CONDA_SCRIPT -O $WORKDIR/$CONDA_SCRIPT
        else
-          echo "curl $CONDA_URL/Miniconda3-${MINICONDA_VER}-MacOSX-x86_64.sh -o $WORKDIR/$MINICONDA"
-          curl $CONDA_URL/Miniconda3-${MINICONDA_VER}-MacOSX-x86_64.sh -o $WORKDIR/$MINICONDA
+          CONDA_SCRIPT="Miniconda3-${MINICONDA_VER}-MacOSX-x86_64.sh"
+          echo "curl $CONDA_URL/$CONDA_SCRIPT -o $WORKDIR/$CONDA_SCRIPT"
+          curl $CONDA_URL/$CONDA_SCRIPT -o $WORKDIR/$CONDA_SCRIPT
        fi
-       bash $WORKDIR/$MINICONDA -b -p $WORKDIR/miniconda
+       bash $WORKDIR/$CONDA_SCRIPT -b -p $WORKDIR/miniconda
 
        source $WORKDIR/miniconda/etc/profile.d/conda.sh
        conda activate base
