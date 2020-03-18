@@ -37,8 +37,8 @@ aliases:
        conda activate base
 
        #git clone -b dev https://github.com/muryanto1/vtk-feedstock.git $WORKDIR/vtk-feedstock
-       git clone -b test_lina https://github.com/muryanto1/vtk-feedstock.git $WORKDIR/vtk-feedstock
-       #git clone -b test_lina https://github.com/xylar/vtk-feedstock.git $WORKDIR/vtk-feedstock
+       #git clone -b test_lina https://github.com/muryanto1/vtk-feedstock.git $WORKDIR/vtk-feedstock
+       git clone -b test_master https://github.com/xylar/vtk-feedstock.git $WORKDIR/vtk-feedstock
        cd $WORKDIR/vtk-feedstock
        conda smithy rerender
        ls -l .ci_support      
@@ -243,51 +243,27 @@ workflows:
       jobs:
          - macos_setup
          - linux_setup
-         #- osx_VTK_WITH_OSMESAFalsepython3.7:
-         #     requires:
-         #        - macos_setup
-         #- osx_VTK_WITH_OSMESATruepython3.7:
-         #     requires:
-         #        - macos_setup
-         #- linux_VTK_WITH_OSMESAFalsepython3.7:
-         #     requires:
-         #        - linux_setup
-         #- linux_VTK_WITH_OSMESATruepython3.7:
-         #     requires:
-         #       - linux_setup
-         #- osx_python2.7:
-         #     requires:
-         #        - macos_setup
-         #- osx_python3.7:
-         #     requires:
-         #        - macos_setup
-         #- linux_python2.7:
-         #     requires:
-         #        - linux_setup
-         #- linux_python3.7:
-         #     requires:
-         #        - linux_setup
-         - osx_python2.7:
+         - osx_VTK_WITH_OSMESAFalsepython3.7:
               requires:
                  - macos_setup
-         - osx_python3.6:
+         - osx_VTK_WITH_OSMESATruepython3.7:
+              requires:
+                 - macos_setup
+         - linux_VTK_WITH_OSMESAFalsepython3.7:
+              requires:
+                 - linux_setup
+         - linux_VTK_WITH_OSMESATruepython3.7:
+              requires:
+                 - linux_setup
+         - osx_python2.7:
               requires:
                  - macos_setup
          - osx_python3.7:
               requires:
                  - macos_setup
-         - osx_python3.8:
-              requires:
-                 - macos_setup
          - linux_python2.7:
               requires:
                  - linux_setup
-         - linux_python3.6:
-              requires:
-                 - linux_setup
          - linux_python3.7:
-              requires:
-                 - linux_setup
-         - linux_python3.8:
               requires:
                  - linux_setup
