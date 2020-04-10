@@ -4,7 +4,7 @@ aliases:
   - &setup_miniconda
     name: setup_miniconda
     environment:
-       CONDA_URL: "https://repo.continuum.io/miniconda"
+       CONDA_URL: "https://repo.anaconda.com/miniconda"
     command: |
        mkdir -p $WORKDIR
        if [[ `uname` == Linux ]]; then
@@ -38,7 +38,7 @@ aliases:
 
        #git clone -b dev https://github.com/muryanto1/vtk-feedstock.git $WORKDIR/vtk-feedstock
        #git clone -b test_lina https://github.com/muryanto1/vtk-feedstock.git $WORKDIR/vtk-feedstock
-       git clone -b test_master https://github.com/xylar/vtk-feedstock.git $WORKDIR/vtk-feedstock
+       git clone -b dev https://github.com/conda-forge/vtk-feedstock.git $WORKDIR/vtk-feedstock
        cd $WORKDIR/vtk-feedstock
        conda smithy rerender
        ls -l .ci_support      
@@ -70,7 +70,7 @@ aliases:
 jobs:
    macos_setup:
       macos:
-         xcode: "11.3.0"
+         xcode: "11.4.0"
       environment:
          WORKDIR: /Users/distiller/project/macos_build
          MINICONDA_VER: "4.7.12.1"
@@ -101,7 +101,7 @@ jobs:
 
    osx_VTK_WITH_OSMESAFalsepython3.7:
       macos:
-         xcode: "11.3.0"
+         xcode: "11.4.0"
       environment:
          WORKDIR: /Users/distiller/project/macos_build
          VARIANT: "osx_VTK_WITH_OSMESAFalsepython3.7"
@@ -117,7 +117,7 @@ jobs:
 
    osx_VTK_WITH_OSMESATruepython3.7:
       macos:
-         xcode: "11.3.0"
+         xcode: "11.4.0"
       environment:
          WORKDIR: /Users/distiller/project/macos_build
          VARIANT: "osx_VTK_WITH_OSMESATruepython3.7"
@@ -167,7 +167,7 @@ jobs:
 
    upload:
       macos:
-         xcode: "11.3.0"
+         xcode: "11.4.0"
       environment:
          WORKDIR: /Users/distiller/project/macos_build
          PKG_NAME: "vtk"
